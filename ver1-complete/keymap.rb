@@ -13,9 +13,7 @@ col2 = 2
 
 # `split=` should happen before `init_pins`
 kbd.split = true
-
-kbd.mutual_uart_at_my_own_risk = true
-
+kbd.uart_pin = 1 # See below.
 # If your right hand of CRKBD is the "anchor"
 # kbd.set_anchor(:right)
 
