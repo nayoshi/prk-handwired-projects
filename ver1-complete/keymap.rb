@@ -1,3 +1,4 @@
+require "via"
 # Initialize a Keyboard
 kbd = Keyboard.new
 
@@ -11,11 +12,11 @@ col0 = 3
 col1 = 4
 col2 = 2
 
-# `split=` should happen before `init_pins`
 kbd.split = true
-kbd.uart_pin = 1 # See below.
-# If your right hand of CRKBD is the "anchor"
-# kbd.set_anchor(:right)
+kbd.uart_pin = 1
+
+kbd.via = true
+kbd.via_layer_count = 4
 
 kbd.init_matrix_pins([
   [[col0, row0], [row0, col0], [col1, row0], [row0, col1], [col2, row0], [row0, col2]],
@@ -27,12 +28,12 @@ kbd.init_matrix_pins([
 ])
 
 kbd.add_layer :default, %i[
-  KC_Q      KC_W    KC_E    KC_R   KC_T    KC_Y      KC_Q      KC_W    KC_E    KC_R   KC_T    KC_Y
-  KC_A      KC_S    KC_D    KC_F   KC_G    KC_H      KC_A      KC_S    KC_D    KC_F   KC_G    KC_H
-  KC_Z      KC_X    KC_C    KC_V   KC_B    KC_N      KC_Z      KC_X    KC_C    KC_V   KC_B    KC_N
-  KC_1      KC_2    KC_3    KC_4   KC_5    KC_6      KC_1      KC_2    KC_3    KC_4   KC_5    KC_6
-  KC_7      KC_8    KC_9    KC_0   KC_U    KC_I      KC_7      KC_8    KC_9    KC_0   KC_U    KC_I
-                                   KC_O    KC_P      KC_O      KC_P
+  KC_Q      KC_W    KC_E    KC_R   KC_T    KC_Y      KC_Y      KC_T    KC_R    KC_E   KC_W    KC_Q
+  KC_A      KC_S    KC_D    KC_F   KC_G    KC_H      KC_H      KC_G    KC_F    KC_D   KC_S    KC_A
+  KC_Z      KC_X    KC_C    KC_V   KC_B    KC_N      KC_N      KC_B    KC_V    KC_C   KC_X    KC_Z
+  KC_1      KC_2    KC_3    KC_4   KC_5    KC_6      KC_6      KC_5    KC_4    KC_3   KC_2    KC_1
+  KC_7      KC_8    KC_9    KC_0   KC_U    KC_I      KC_I      KC_U    KC_0    KC_9   KC_8    KC_7
+  KC_NO     KC_NO   KC_NO   KC_NO  KC_O    KC_P      KC_P      KC_O    KC_NO   KC_NO  KC_NO   KC_NO
 ]
 
 kbd.start!
